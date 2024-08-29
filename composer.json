@@ -1,0 +1,17 @@
+{
+    "name": "mateusmirandaribas/pdo-practice",
+    "description": "Repository intended for PDO practice.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mateusmirandaribas",
+            "email": "contato.mateusmribas@gmail.com"
+        }
+    ],
+    "require": {}
+}
