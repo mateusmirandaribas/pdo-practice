@@ -30,6 +30,29 @@ class Student
 
         $this->sqliteConnection->pdo->exec($query);
 
-        echo "Student successfully registered!";
+        echo "Student {$student->name} successfully registered!";
+    }
+
+    /**
+     *
+     * @return array
+     * @throws Exception
+     */
+    public function selectAllStudents(): array
+    {
+        $query = "SELECT * FROM students";
+
+        $statement = $this->sqliteConnection->pdo->query($query);
+        $studentDataList = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        
+        foreach ($studentDataList as $studentData) {
+            $studentList[] = new StudentObject(
+                $studentData['id'],
+                $studentData['name'],
+                $studentData['birth_date']
+            );
+        }
+
+        return $studentList;
     }
 }
