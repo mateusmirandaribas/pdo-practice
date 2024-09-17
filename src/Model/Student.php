@@ -25,11 +25,12 @@ class Student
      */
     public function store(StudentObject $student): void
     {
-        $query = "INSERT INTO students (name, birth_date)
-                    VALUES ('{$student->name}', '{$student->birthDate}'
-        )";
+        $query = "INSERT INTO students (name, birth_date) VALUES (:name, :birth_date)";
 
-        $this->sqliteConnection->pdo->exec($query);
+        $statement = $this->sqliteConnection->pdo->prepare($query);
+        $statement->bindValue(':name', $student->name);
+        $statement->bindValue(':birth_date', $student->birthDate);
+        $statement->execute();
 
         echo "Student {$student->name} successfully registered!";
     }
