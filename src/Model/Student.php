@@ -83,4 +83,21 @@ class Student
 
         throw new Exception("No student with ID {$id} was found.", 404);
     }
+
+    /**
+     *
+     * @param integer $id
+     * @return void
+     * @throws Exception
+     */
+    public function deleteStudentById(int $id): void
+    {
+        $query = "DELETE FROM students WHERE id = :id";
+
+        $statement = $this->sqliteConnection->pdo->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        echo "Student successfully deleted!";
+    }
 }
