@@ -2,6 +2,7 @@
 
 namespace src\Model;
 
+use Exception;
 use src\Student as StudentObject;
 use src\Repository\DatabaseConnectionInterface;
 
@@ -54,5 +55,31 @@ class Student
         }
 
         return $studentList;
+    }
+
+    /**
+     *
+     * @param integer $id
+     * @return StudentObject
+     * @throws Exception
+     */
+    public function selectStudentById(int $id): StudentObject
+    {
+        $query = "SELECT * FROM students WHERE id = {$id}";
+
+        $statement = $this->sqliteConnection->pdo->query($query);
+        $studentData = $statement->fetch(\PDO::FETCH_ASSOC);
+
+        if ($studentData != false) {
+            $student = new StudentObject(
+                $studentData['id'],
+                $studentData['name'],
+                $studentData['birth_date']
+            );
+    
+            return $student;
+        }
+
+        throw new Exception("No student with ID {$id} was found.", 404);
     }
 }
