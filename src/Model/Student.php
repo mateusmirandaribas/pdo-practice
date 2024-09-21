@@ -4,7 +4,7 @@ namespace src\Model;
 
 use Exception;
 use src\Student as StudentObject;
-use src\Repository\DatabaseConnectionInterface;
+use src\Infrastructure\DatabaseConnectionInterface;
 
 class Student
 {

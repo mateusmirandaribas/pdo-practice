@@ -2,7 +2,7 @@
 
 require_once '../../../index.php';
 
-use src\Repository\SQLiteConnection;
+use src\Infrastructure\SQLiteConnection;
 
 try {
     $sqliteConnection = new SQLiteConnection();

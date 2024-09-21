@@ -3,7 +3,7 @@
 require_once '../index.php';
 
 use src\Student as StudentObject;
-use src\Repository\SQLiteConnection;
+use src\Infrastructure\SQLiteConnection;
 use src\Model\Student as StudentModel;
 
 try {

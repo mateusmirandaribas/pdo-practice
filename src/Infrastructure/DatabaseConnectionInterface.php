@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Repository;
+namespace src\Infrastructure;
 
 interface DatabaseConnectionInterface
 {
