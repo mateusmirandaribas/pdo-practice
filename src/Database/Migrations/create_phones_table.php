@@ -7,7 +7,7 @@ use src\Infrastructure\SQLiteConnection;
 try {
     $sqliteConnection = new SQLiteConnection();
     $sqliteConnection->pdo->exec(
-        'CREATE TABLE phones (
+        'CREATE TABLE phones IF NOT EXISTS (
             id INTEGER PRIMARY KEY,
             area_code TEXT,
             number TEXT,
